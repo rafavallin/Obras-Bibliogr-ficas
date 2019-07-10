@@ -11793,6 +11793,7 @@
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
+      "Microsoft.AspNetCore.SpaServices.Extensions >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
   },
@@ -11803,11 +11804,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rafael\\Laboratorios Dev\\ObrasBibliograficas\\ObrasBibliograficas\\ObrasBibliograficas.WebApi\\ObrasBibliograficas.WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Rafael\\Laboratorios Dev\\Obras\\ObrasBibliograficas\\ObrasBibliograficas.WebApi\\ObrasBibliograficas.WebApi.csproj",
       "projectName": "ObrasBibliograficas.WebApi",
-      "projectPath": "C:\\Users\\Rafael\\Laboratorios Dev\\ObrasBibliograficas\\ObrasBibliograficas\\ObrasBibliograficas.WebApi\\ObrasBibliograficas.WebApi.csproj",
+      "projectPath": "C:\\Users\\Rafael\\Laboratorios Dev\\Obras\\ObrasBibliograficas\\ObrasBibliograficas.WebApi\\ObrasBibliograficas.WebApi.csproj",
       "packagesPath": "C:\\Users\\Rafael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rafael\\Laboratorios Dev\\ObrasBibliograficas\\ObrasBibliograficas\\ObrasBibliograficas.WebApi\\obj\\",
+      "outputPath": "C:\\Users\\Rafael\\Laboratorios Dev\\Obras\\ObrasBibliograficas\\ObrasBibliograficas.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11847,6 +11848,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.2, )"
+          },
+          "Microsoft.AspNetCore.SpaServices.Extensions": {
+            "target": "Package",
+            "version": "[2.1.1, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
