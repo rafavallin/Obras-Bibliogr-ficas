@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NetCoreAPI.Models;
+using NetCoreAPI.Repository;
 
 namespace ObrasBibliograficas.WebApi
 {
@@ -26,6 +29,8 @@ namespace ObrasBibliograficas.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IRepository<Autor>, Repository<Autor>>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSpaStaticFiles(configuration => {
                 configuration.RootPath = "ClientApp/Static";
@@ -51,7 +56,8 @@ namespace ObrasBibliograficas.WebApi
             app.UseMvc(mvc => {
                 mvc.MapRoute("Default", "{controller}/{action}/{id?}");
             });
-            app.UseSpa(spa => {
+            app.UseSpa(spa =>
+            {
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
