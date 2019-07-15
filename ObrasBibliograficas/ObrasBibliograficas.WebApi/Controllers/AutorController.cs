@@ -50,6 +50,21 @@ namespace NetCoreAPI.Controllers
             return CreatedAtRoute("GetAutor", new { id = _autor.IdAutor }, _autor);
         }
 
+        [HttpPost]
+        public IActionResult CreateGroup([FromBody] List<string> lNomeCompleto)
+        {
+            foreach (var nomeCompleto in lNomeCompleto)
+            {
+                if (nomeCompleto == null)
+                    return BadRequest();
+
+                Autor _autor = new Autor(nomeCompleto);
+
+                _repository.Add(_autor);
+            }
+            return new NoContentResult();
+        }
+
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] string nomeCompleto)
         {

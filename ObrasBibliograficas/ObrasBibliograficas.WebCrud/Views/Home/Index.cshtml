@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ObrasBibliograficas.WebCrud.Models.Autor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Obras Bibliográficas</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Autores", "Create",null,null,  new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeExibicao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeExibicao)
+                </td>
+                <td>
+                    @Html.ActionLink("X", "Delete", new { id = item.IdAutor }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

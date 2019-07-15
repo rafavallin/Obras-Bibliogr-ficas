@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCoreAPI.Models
+namespace ObrasBibliograficas.WebCrud.Models
 {
     public class Autor
     {
@@ -37,10 +37,7 @@ namespace NetCoreAPI.Models
                 }
 
             }
-            if (Nomes.Length == 1)
-                NomeExibicao = Nome.ToUpper();
-            else
-                NomeExibicao = Sobrenome + ", " + DefineLetraMaiuscula(Nome) + " " + NomeAux;
+            NomeExibicao = Sobrenome + ", " + DefineLetraMaiuscula(Nome) + " " + NomeAux;
 
         }
         public string DefineLetraMaiuscula(string palavra)
@@ -68,5 +65,8 @@ namespace NetCoreAPI.Models
 
         public string NomeCompleto { get; set; }
         public string NomeExibicao { get; set; }
-    }
+
+        public string TipoRetorno { get; set; }
+        public string StatusRetorno{ get; set; }
+}
 }

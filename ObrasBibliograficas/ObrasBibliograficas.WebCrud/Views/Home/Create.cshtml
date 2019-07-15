@@ -1,0 +1,75 @@
+﻿@model ObrasBibliograficas.WebCrud.Models.Autor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+<hr />
+@Html.ActionLink("Adicionar Autor", "Create", null, null,  new { @class = "btn btn-primary", id = "AddAutor" })
+<div class="row">
+    <br />
+    <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div id="wrapper">
+                <div class="row">
+                    <label asp-for="NomeCompleto" class="control-label"></label>
+                    <div class="form-group" id="divNomeCompleto">
+                        <div class="col-md-6">
+                            <input asp-for="NomeCompleto" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="button" id="create" value="Create" class="btn btn-success" />
+                <input type="button" id="voltar" value="Voltar" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Home")'"  />
+            </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var max_fields      = 10; //maximum input boxes allowed
+            var wrapper         = $("#wrapper"); //Fields wrapper
+            var add_button      = $("#AddAutor"); //Add button ID
+
+            var x = 1; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(x < max_fields){ //max input box allowed
+                    x++; //text box increment
+                    $(wrapper).append('<div class="row"><label asp-for="NomeCompleto" class="control-label"></label><div class="form-group" id="divNomeCompleto"><div class="col-md-6"><input id="NomeCompleto" class="form-control" /></div><div class="col-md-6"><button type="button" id="remove_field" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove-circle"></span> Remover</button></div></div></div>'); //add input box
+                }
+            });
+
+            $(wrapper).on("click","#remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').parent('div').parent('div').remove(); x--;
+            })
+
+            $("#create").click(function (e) {
+                var data = new Array();
+ 
+              $(".form-control").each(function(){
+                 data.push($(this).val());
+              });
+
+                $.ajax({
+                url: '/Home/Create',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(data) {
+                    location.href='@Url.Action("Index", "Home")'
+                }
+                })
+            })
+        });
+
+
+    </script>
+}
